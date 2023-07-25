@@ -1,0 +1,87 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+#results {
+  margin-top: 30px;
+}
+
+.user-info {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.user-info h2 {
+  margin-bottom: 5px;
+}
+
+.recent-activity p {
+  margin-bottom: 5px;
+}
+
+.popular-repos p {
+  margin-bottom: 5px;
+}
+
+.starred-projects-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.starred-card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.starred-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  max-width: 300px;
+}
+
+.starred-card h3 {
+  margin-bottom: 5px;
+}
+
+.starred-card p {
+  margin-bottom: 5px;
+}
+
+.starred-card a {
+  display: block;
+}
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-list {
+  display: flex;
+  justify-content: center;
+}
+
+.section-list p {
+  margin: 5px;
+}
