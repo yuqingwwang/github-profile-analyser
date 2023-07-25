@@ -1,9 +1,11 @@
 # GitHub Profile Analyser
 
-Search for a GitHub username to see information about their profile.
+Interested to learn more about your fellow FAC28 members?
+
+Search for their GitHub username to see information about their profile.
 
 ## Features
 
-- Show their starred projects.
-- Show their recent activity.
-- Figure out what their most popular repositories are.
+- Showing a user's starred projects.
+- Showing a user's recent activity.
+- Listing a user's most popular repositories.
