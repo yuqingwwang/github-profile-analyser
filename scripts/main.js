@@ -4,7 +4,13 @@ import { getGitHubData, displayResults } from './github.js';
 let USERNAME = "";
 
 const submitButton = document.getElementById("submit");
-submitButton.addEventListener("click", getUserSelection);
+const recentActivitiesHeader = document.getElementById("recentActivitiesHeader");
+
+// Add event listener to the submit button
+submitButton.addEventListener("click", () => {
+  recentActivitiesHeader.style.display = "block";
+  getUserSelection();
+});
 
 populateDropdown();
 
@@ -25,6 +31,16 @@ function clearResults() {
   const resultsDiv = document.getElementById("results");
   while (resultsDiv.firstChild) {
       resultsDiv.removeChild(resultsDiv.firstChild);
+  }
+  // Clear the content of the canvas
+  const canvas = document.getElementById("myChart");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Destroy the Chart.js instance associated with the canvas
+  const existingChart = Chart.getChart(canvas);
+  if (existingChart) {
+    existingChart.destroy();
   }
 }
 

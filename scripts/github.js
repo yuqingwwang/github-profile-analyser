@@ -1,3 +1,5 @@
+import { makePieChart } from "./canvas.js";
+
 const proxyURI = "https://ghproxy-naxabue7rq-ew.a.run.app/users/"
 
 export async function getGitHubData(username) {
@@ -124,28 +126,22 @@ export function displayResults(data) {
 
   // Recent Activity Title
 
-  const recentActivityTitle = document.createElement("div");
-  recentActivityTitle.classList.add("section-title");
-  recentActivityTitle.textContent = "Recent Activities:";
-  resultsDiv.appendChild(recentActivityTitle);
-
-  // Recent Activities as List
-  const recentActivityList = document.createElement("div");
-  recentActivityList.classList.add("section-list");
-
-  // Create an unordered list (ul) element
-  const ulElement = document.createElement("ul");
-  recentActivityList.appendChild(ulElement);
-
-
-  data.activity.slice(0, 3).forEach(event => {
-    const eventText = document.createElement("li");
-    const formattedDate = formatDateTime(event.created_at);
-    eventText.textContent = `${formattedDate} ${event.type.replace("Event", "")}`;
-    ulElement.appendChild(eventText); // Append the list item to the unordered list (ul)
+  const activityCounts = {};
+  data.activity.slice(0, 20).forEach(event => {
+    const activityType = event.type.replace("Event", "");
+    activityCounts[activityType] = (activityCounts[activityType] || 0) + 1;
   });
 
-  resultsDiv.appendChild(recentActivityList);
+  // Extract activity types and their corresponding counts
+  const activityTypes = Object.keys(activityCounts);
+  const activityTypeCounts = Object.values(activityCounts);
+
+  console.log(activityTypes, activityTypeCounts)
+
+  const recentActivityTitle = document.createElement("div");
+
+  makePieChart(activityTypes, activityTypeCounts);
+  resultsDiv.appendChild(recentActivityTitle);
 
   // Most Popular Repositories
 
