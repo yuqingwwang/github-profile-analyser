@@ -36,12 +36,13 @@ h2 {
 .starred-projects-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   margin-bottom: 20px;
 }
 
 .starred-card-container {
   display: flex;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -79,10 +80,12 @@ h2 {
 
 .section-list {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
 }
 
-.section-list p {
+.section-list li {
   margin: 5px;
 }
 
