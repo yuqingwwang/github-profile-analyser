@@ -51,6 +51,11 @@ export function formatDateTime(dateTimeStr) {
 export function displayResults(data) {
   const resultsDiv = document.getElementById("results");
 
+  // if there's no bio, display a message
+  if (!data.user.bio) {
+    data.user.bio = "No bio available.";
+  }
+
   // User Information
   const userInformation = document.createElement("div");
   userInformation.classList.add("user-info");
@@ -60,6 +65,7 @@ export function displayResults(data) {
     <p>Location: ${data.user.location}</p>
     <p>Bio: ${data.user.bio}</p>`;
   resultsDiv.appendChild(userInformation);
+
   // display user avatar
   const avatar = document.createElement("img");
   avatar.classList.add("avatar");
@@ -74,6 +80,15 @@ export function displayResults(data) {
   resultsDiv.appendChild(starredProjectsTitle);
 
   // Starred Projects as Cards
+
+   // if there's no starred repos, display a message
+   if (data.starred.length === 0) {
+    data.starred.push({
+      name: "No starred repos",
+      description: ""
+    });
+  }
+
   const starredProjectsContainer = document.createElement("div");
   starredProjectsContainer.classList.add("starred-projects-container");
 
@@ -92,10 +107,12 @@ export function displayResults(data) {
     repoDescription.textContent = repo.description || "No description available.";
     repoCard.appendChild(repoDescription);
 
-    const repoLink = document.createElement("a");
-    repoLink.href = repo.html_url;
-    repoLink.textContent = "View on GitHub";
-    repoCard.appendChild(repoLink);
+    if (repo.html_url) {
+      const repoLink = document.createElement("a");
+      repoLink.href = repo.html_url;
+      repoLink.textContent = "View on GitHub";
+      repoCard.appendChild(repoLink);
+    }
 
     starredCardContainer.appendChild(repoCard);
   });
@@ -104,6 +121,7 @@ export function displayResults(data) {
   resultsDiv.appendChild(starredProjectsContainer);
 
   // Recent Activity Title
+
   const recentActivityTitle = document.createElement("div");
   recentActivityTitle.classList.add("section-title");
   recentActivityTitle.textContent = "Recent Activities:";
@@ -113,23 +131,40 @@ export function displayResults(data) {
   const recentActivityList = document.createElement("div");
   recentActivityList.classList.add("section-list");
 
+  // Create an unordered list (ul) element
+  const ulElement = document.createElement("ul");
+  recentActivityList.appendChild(ulElement);
+
+
   data.activity.slice(0, 3).forEach(event => {
-    const eventText = document.createElement("p");
+    const eventText = document.createElement("li");
     const formattedDate = formatDateTime(event.created_at);
     eventText.textContent = `${formattedDate} ${event.type.replace("Event", "")}`;
-    recentActivityList.appendChild(eventText);
+    ulElement.appendChild(eventText); // Append the list item to the unordered list (ul)
   });
 
   resultsDiv.appendChild(recentActivityList);
 
   // Most Popular Repositories
+
   const popularRepos = document.createElement("div");
   popularRepos.classList.add("popular-repos");
   popularRepos.innerHTML = "<h2>Most Popular Repositories:</h2>";
-  data.mostPopularRepos.slice(0, 3).forEach(repo => {
+
+  // only display repo with more than 0 stars
+  const starredRepos = data.mostPopularRepos.filter(repo => repo.stargazers_count > 0);
+
+  if(starredRepos.length === 0){
     const repoText = document.createElement("p");
-    repoText.textContent = `${repo.name} - ${repo.stargazers_count} stars`;
+    repoText.textContent = "No starred repos";
     popularRepos.appendChild(repoText);
-  });
+  } else {
+    starredRepos.slice(0, 3).forEach(repo => {
+      const repoText = document.createElement("p");
+      repoText.textContent = `${repo.name} - ${repo.stargazers_count} stars`;
+      popularRepos.appendChild(repoText);
+    });
+  }
+
   resultsDiv.appendChild(popularRepos);
 }
