@@ -9,17 +9,27 @@
 <body>
   <h1>GitHub Profile Analyzer</h1>
 
-  <h2>Select a User:</h1>
+  <div class="selection">
+    <h2>Select a User:</h2>
+
     <select id="userDropdown">
-        <option value="">Select a user</option>
+      <option value="">Select a user</option>
     </select>
-
     <button id="submit">Submit</button>
-
-  <h2 id="recentActivitiesHeader" style="display: none;">Recent activities</h2>
-  <div id="chartContainer" style='width: 500px;'>
-    <canvas id="myChart"></canvas>
   </div>
+
+  <div class="container">
+    <div class="user-info-container" id="user-container">
+
+      <div class="user-info" id="userInfo"></div>
+    </div>
+
+    <div class="chart-container">
+      <h2 id="recentActivitiesHeader" style="display: none;">Recent activities</h2>
+      <canvas id="myChart" style="height:300px;"></canvas>
+    </div>
+  </div>
+
 
   <div id="results"></div>
 

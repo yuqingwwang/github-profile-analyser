@@ -1,6 +1,8 @@
 import { makeChart } from "./canvas.js";
 import { TYPES } from "./constants.js";
 
+const recentActivitiesHeader = document.getElementById("recentActivitiesHeader");
+
 const proxyURI = "https://ghproxy-naxabue7rq-ew.a.run.app/users/"
 
 export async function getGitHubData(username) {
@@ -61,15 +63,17 @@ export function displayResults(data) {
     }
   }
 
+  const userContainer = document.querySelector(".user-info");
+
   // User Information
   const userInformation = document.createElement("div");
-  userInformation.classList.add("user-info");
-  userInformation.innerHTML = `<h2>User Information:</h2>
+
+  userInformation.innerHTML = `<h2>User Information</h2>
     <p>Username: ${data.user.login}</p>
     <p>Name: ${data.user.name}</p>
     <p>Location: ${data.user.location}</p>
     <p>Bio: ${data.user.bio}</p>`;
-  resultsDiv.appendChild(userInformation);
+  userContainer.appendChild(userInformation);
 
   // display user avatar
   const avatar = document.createElement("img");
@@ -139,12 +143,11 @@ export function displayResults(data) {
   const activityTypes = Object.keys(activityCounts).sort((a, b) => activityCounts[b] - activityCounts[a]);
   const activityTypeCounts = Object.values(activityCounts).sort((a, b) => b - a);
 
-  console.log(activityTypes, activityTypeCounts)
-
   const recentActivityTitle = document.createElement("div");
 
   makeChart(activityTypes, activityTypeCounts);
   resultsDiv.appendChild(recentActivityTitle);
+  recentActivitiesHeader.style.display = "block";
 
   // Most Popular Repositories
 

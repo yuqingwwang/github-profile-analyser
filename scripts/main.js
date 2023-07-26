@@ -4,11 +4,9 @@ import { getGitHubData, displayResults } from './github.js';
 let USERNAME = "";
 
 const submitButton = document.getElementById("submit");
-const recentActivitiesHeader = document.getElementById("recentActivitiesHeader");
 
 // Add event listener to the submit button
 submitButton.addEventListener("click", () => {
-  recentActivitiesHeader.style.display = "block";
   getUserSelection();
 });
 
@@ -28,10 +26,16 @@ function getUserSelection() {
 }
 
 function clearResults() {
+  const container = document.getElementById("userInfo");
+  while (container.firstChild) {
+      container.removeChild(container.firstChild);
+  }
+
   const resultsDiv = document.getElementById("results");
   while (resultsDiv.firstChild) {
       resultsDiv.removeChild(resultsDiv.firstChild);
   }
+
   // Clear the content of the canvas
   const canvas = document.getElementById("myChart");
   const ctx = canvas.getContext("2d");
