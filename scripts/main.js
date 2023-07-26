@@ -4,6 +4,8 @@ import { getGitHubData, displayResults } from './github.js';
 let USERNAME = "";
 
 const submitButton = document.getElementById("submit");
+const recentActivitiesHeader = document.getElementById("recentActivitiesHeader");
+
 
 // Add event listener to the submit button
 submitButton.addEventListener("click", () => {
@@ -20,6 +22,7 @@ function getUserSelection() {
       alert("Please select a user.");
   } else {
       USERNAME = selectedUser;
+      recentActivitiesHeader.style.display = "none";
       clearResults();
       main();
   }
