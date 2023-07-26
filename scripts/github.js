@@ -51,9 +51,11 @@ export function formatDateTime(dateTimeStr) {
 export function displayResults(data) {
   const resultsDiv = document.getElementById("results");
 
-  // if there's no bio, display a message
-  if (!data.user.bio) {
-    data.user.bio = "No bio available.";
+  // if there's no name/location/bio, display a message
+  for (const key in data.user) {
+    if (!data.user[key]) {
+      data.user[key] = "No info";
+    }
   }
 
   // User Information
