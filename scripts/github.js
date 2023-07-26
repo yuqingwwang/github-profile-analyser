@@ -17,11 +17,17 @@ export async function getGitHubData(username) {
 
     const mostPopularRepos = reposData.sort((a, b) => b.stargazers_count - a.stargazers_count);
 
+    // retrieve user avatar
+    const avatarResponse = await fetch(userData.avatar_url);
+    const avatarBlob = await avatarResponse.blob();
+    const avatarURL = URL.createObjectURL(avatarBlob);
+    userData.avatar_url = avatarURL;
+
     return {
       user: userData,
       starred: starredData,
       activity: activityData,
-      mostPopularRepos: mostPopularRepos
+      mostPopularRepos: mostPopularRepos,
     };
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -54,6 +60,12 @@ export function displayResults(data) {
     <p>Location: ${data.user.location}</p>
     <p>Bio: ${data.user.bio}</p>`;
   resultsDiv.appendChild(userInformation);
+  // display user avatar
+  const avatar = document.createElement("img");
+  avatar.classList.add("avatar");
+  avatar.src = data.user.avatar_url;
+  avatar.alt = `${data.user.login}'s avatar`;
+  userInformation.appendChild(avatar);
 
   // Starred Projects Title
   const starredProjectsTitle = document.createElement("div");
