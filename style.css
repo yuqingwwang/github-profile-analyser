@@ -101,8 +101,28 @@ h3, p {
 .chart-container {
   flex: 1;
   max-width: 500px;
-  height: 300px;
+  width: auto;
+  height: 500px;
   margin-left: 20px;
   padding-bottom: 20px;
-  overflow: scroll;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .chart-container {
+    max-width: 100%;
+    width: auto;
+    overflow-x: scroll;
+    height: 300px;
+    white-space: nowrap;
+  }
+  #myChart {
+    max-height: 300px;
+    overflow-x: scroll;
+    margin: auto;
+    padding: 10px;
+  }
 }
