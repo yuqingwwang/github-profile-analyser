@@ -17,3 +17,5 @@ export const TYPES = {
   'SponsorshipEvent': 'Sponsorship',
   'WatchEvent': 'Watch'
 }
+
+export const customColors = ["#8ecae6","#219ebc","#023047","#ffb703","#fb8500"];
