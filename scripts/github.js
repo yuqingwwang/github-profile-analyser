@@ -1,5 +1,5 @@
-import { makePieChart } from "./canvas.js";
-import { TYPES } from "./eventTypes.js";
+import { makeChart } from "./canvas.js";
+import { TYPES } from "./constants.js";
 
 const proxyURI = "https://ghproxy-naxabue7rq-ew.a.run.app/users/"
 
@@ -134,14 +134,16 @@ export function displayResults(data) {
   });
 
   // Extract activity types and their corresponding counts
-  const activityTypes = Object.keys(activityCounts);
-  const activityTypeCounts = Object.values(activityCounts);
+
+  // sort activityCounts by count
+  const activityTypes = Object.keys(activityCounts).sort((a, b) => activityCounts[b] - activityCounts[a]);
+  const activityTypeCounts = Object.values(activityCounts).sort((a, b) => b - a);
 
   console.log(activityTypes, activityTypeCounts)
 
   const recentActivityTitle = document.createElement("div");
 
-  makePieChart(activityTypes, activityTypeCounts);
+  makeChart(activityTypes, activityTypeCounts);
   resultsDiv.appendChild(recentActivityTitle);
 
   // Most Popular Repositories
