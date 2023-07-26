@@ -6,6 +6,7 @@ const recentActivitiesHeader = document.getElementById("recentActivitiesHeader")
 const proxyURI = "https://ghproxy-naxabue7rq-ew.a.run.app/users/"
 
 export async function getGitHubData(username) {
+  if(!username) return;
 
   try {
     const userResponse = await fetch(`${proxyURI}${username}`);
