@@ -61,6 +61,13 @@ View the page on [GitHub Pages](https://yuqingwwang.github.io/github-profile-ana
 
 HTML, CSS, JavaScript
 
+[Chart.js](https://www.chartjs.org/docs/latest/)
+
 Fast API, Docker, Uvicorn, Google Cloud Platform
 
-- to protect the GitHub API token, I built a proxy [here](https://ghproxy-naxabue7rq-ew.a.run.app/docs)
+- These tools are used to build a proxy to protect the GitHub API token. You can view my
+proxy's documentation [here](https://ghproxy-naxabue7rq-ew.a.run.app/docs)
+
+## Acknowledgements
+
+Colour palletes for the bar chart is from [Coolors](https://coolors.co/8ecae6-219ebc-023047-ffb703-fb8500)
