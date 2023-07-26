@@ -1,4 +1,5 @@
 import { makePieChart } from "./canvas.js";
+import { TYPES } from "./eventTypes.js";
 
 const proxyURI = "https://ghproxy-naxabue7rq-ew.a.run.app/users/"
 
@@ -124,11 +125,11 @@ export function displayResults(data) {
   starredProjectsContainer.appendChild(starredCardContainer);
   resultsDiv.appendChild(starredProjectsContainer);
 
-  // Recent Activity Title
-
+  // Recent Activity
   const activityCounts = {};
-  data.activity.slice(0, 20).forEach(event => {
-    const activityType = event.type.replace("Event", "");
+  data.activity.slice(0, 10).forEach(event => {
+    // map the values from types
+    const activityType = TYPES[event.type];
     activityCounts[activityType] = (activityCounts[activityType] || 0) + 1;
   });
 
