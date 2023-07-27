@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: auto;
   padding: 20px;
   max-width: 800px;
@@ -7,14 +7,26 @@ body {
 
 h1 {
   text-align: center;
+  font-family: 'Abril Fatface', cursive;
+  font-size: 48px;
 }
 
-h2 {
-  font-size: 20px;
+h2, .section-title {
+  font-size: 22px;
+  font-weight: bold;
 }
 
 h3, p {
   overflow: scroll;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+p, a {
+  font-size: 12px;
 }
 
 #results {
@@ -76,8 +88,6 @@ h3, p {
 }
 
 .section-title {
-  font-size: 20px;
-  font-weight: bold;
   margin-bottom: 10px;
 }
 
