@@ -1,6 +1,19 @@
+html, body {
+  height: 100%;
+}
+
+html {
+  display: table;
+  margin: auto;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  margin: auto;
   padding: 20px;
   max-width: 800px;
 }
@@ -11,9 +24,8 @@ h1 {
   font-size: 48px;
 }
 
-h2, .section-title {
-  font-size: 22px;
-  font-weight: bold;
+h2 {
+  padding-bottom: 1rem;
 }
 
 h3, p {
@@ -133,7 +145,6 @@ p, a {
     max-height: 300px;
     overflow-x: scroll;
     margin: auto;
-    padding: 10px;
   }
 }
 

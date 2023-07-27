@@ -84,9 +84,9 @@ export function displayResults(data) {
   userInformation.appendChild(avatar);
 
   // Starred Projects Title
-  const starredProjectsTitle = document.createElement("div");
+  const starredProjectsTitle = document.createElement("h2");
   starredProjectsTitle.classList.add("section-title");
-  starredProjectsTitle.textContent = "Starred Projects:";
+  starredProjectsTitle.textContent = "Starred Projects";
   resultsDiv.appendChild(starredProjectsTitle);
 
   // Starred Projects as Cards
@@ -154,7 +154,7 @@ export function displayResults(data) {
 
   const popularRepos = document.createElement("div");
   popularRepos.classList.add("popular-repos");
-  popularRepos.innerHTML = "<h2>Most Popular Repositories:</h2>";
+  popularRepos.innerHTML = "<h2>Most Popular Repositories</h2>";
 
   // only display repo with more than 0 stars
   const starredRepos = data.mostPopularRepos.filter(repo => repo.stargazers_count > 0);
