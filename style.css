@@ -132,7 +132,7 @@ p, a {
 
 @media (max-width: 768px) {
   html, body {
-    max-width: 500px;
+    max-width: 400px;
   }
   .container {
     flex-direction: column;
