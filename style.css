@@ -131,8 +131,9 @@ p, a {
 }
 
 @media (max-width: 768px) {
-  html, body {
+  body {
     max-width: 400px;
+    padding: 5px;
   }
   .container {
     flex-direction: column;
